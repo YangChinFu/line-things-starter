@@ -9,7 +9,7 @@ const PSDI_SERVICE_UUID = 'E625601E-9E55-4597-A598-76018A0D293D'; // Device ID
 const PSDI_CHARACTERISTIC_UUID = '26E2B12B-85F0-4F3F-9FDD-91D114270E6E';
 
 // UI settings
-let ledState = true; // true: LED on, false: LED off
+let ledState = false; // true: 繼電器通電(電燈關閉), false: 繼電器斷電(電燈開啟)
 // let clickCount = 0;
 
 // -------------- //
@@ -38,14 +38,14 @@ function handlerToggleLed() {
 function uiToggleLedButton(state) {
     const el = document.getElementById("btn-led-toggle");
     const img = document.getElementById("bulb-img");
-    const imgSrc = state ? "https://yangchinfu.github.io/line-things-starter/assets/off.png" : "https://yangchinfu.github.io/line-things-starter/assets/on.png";
+    const imgSrc = state ? "https://yangchinfu.github.io/line-things-starter/assets/on.png" : "https://yangchinfu.github.io/line-things-starter/assets/off.png";
     img.setAttribute("src", imgSrc);
-    el.innerText = state ? "斷電" : "通電";
+    el.innerText = state ? "通電" : "斷電";
 
     if (state) {
-        el.classList.add("led-on");
-    } else {
         el.classList.remove("led-on");
+    } else {
+        el.classList.add("led-on");
     }
 }
 
