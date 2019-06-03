@@ -1,12 +1,12 @@
 // User service UUID: Change this to your generated service UUID
-const USER_SERVICE_UUID         = 'd4333fc0-005d-40d0-82d2-65021acf6f0c'; // LED, Button
+const USER_SERVICE_UUID = 'd4333fc0-005d-40d0-82d2-65021acf6f0c'; // LED, Button
 // User service characteristics
-const LED_CHARACTERISTIC_UUID   = 'E9062E71-9E62-4BC6-B0D3-35CDCD9B027B';
-const BTN_CHARACTERISTIC_UUID   = '62FBD229-6EDD-4D1A-B554-5C4E1BB29169';
+const LED_CHARACTERISTIC_UUID = 'E9062E71-9E62-4BC6-B0D3-35CDCD9B027B';
+const BTN_CHARACTERISTIC_UUID = '62FBD229-6EDD-4D1A-B554-5C4E1BB29169';
 
 // PSDI Service UUID: Fixed value for Developer Trial
-const PSDI_SERVICE_UUID         = 'E625601E-9E55-4597-A598-76018A0D293D'; // Device ID
-const PSDI_CHARACTERISTIC_UUID  = '26E2B12B-85F0-4F3F-9FDD-91D114270E6E';
+const PSDI_SERVICE_UUID = 'E625601E-9E55-4597-A598-76018A0D293D'; // Device ID
+const PSDI_CHARACTERISTIC_UUID = '26E2B12B-85F0-4F3F-9FDD-91D114270E6E';
 
 // UI settings
 let ledState = false; // true: LED on, false: LED off
@@ -37,12 +37,12 @@ function handlerToggleLed() {
 
 function uiToggleLedButton(state) {
     const el = document.getElementById("btn-led-toggle");
-    el.innerText = state ? "Switch LED OFF" : "Switch LED ON";
+    el.innerText = state ? "斷電" : "通電";
 
     if (state) {
-      el.classList.add("led-on");
+        el.classList.add("led-on");
     } else {
-      el.classList.remove("led-on");
+        el.classList.remove("led-on");
     }
 }
 
@@ -53,17 +53,7 @@ function uiCountPressButton() {
     el.innerText = clickCount;
 }
 
-function uiToggleStateButton(pressed) {
-    const el = document.getElementById("btn-state");
-
-    if (pressed) {
-        el.classList.add("pressed");
-        el.innerText = "Pressed";
-    } else {
-        el.classList.remove("pressed");
-        el.innerText = "Released";
-    }
-}
+function uiToggleStateButton(pressed) {}
 
 function uiToggleDeviceConnected(connected) {
     const elStatus = document.getElementById("status");
@@ -77,7 +67,7 @@ function uiToggleDeviceConnected(connected) {
         // Show status connected
         elStatus.classList.remove("inactive");
         elStatus.classList.add("success");
-        elStatus.innerText = "Device connected";
+        elStatus.innerText = "裝置連線中";
         // Show controls
         elControls.classList.remove("hidden");
     } else {
@@ -86,7 +76,7 @@ function uiToggleDeviceConnected(connected) {
         // Show status disconnected
         elStatus.classList.remove("success");
         elStatus.classList.add("inactive");
-        elStatus.innerText = "Device disconnected";
+        elStatus.innerText = "裝置斷線";
         // Hide controls
         elControls.classList.add("hidden");
     }
@@ -177,11 +167,6 @@ function liffConnectToDevice(device) {
         }).catch(error => {
             uiStatusError(makeErrorMsg(error), false);
         });
-        device.gatt.getPrimaryService(PSDI_SERVICE_UUID).then(service => {
-            liffGetPSDIService(service);
-        }).catch(error => {
-            uiStatusError(makeErrorMsg(error), false);
-        });
 
         // Device disconnect callback
         const disconnectCallback = () => {
@@ -195,7 +180,6 @@ function liffConnectToDevice(device) {
             ledState = false;
             // Reset UI elements
             uiToggleLedButton(false);
-            uiToggleStateButton(false);
 
             // Try to reconnect
             initializeLiff();
@@ -252,7 +236,6 @@ function liffGetButtonStateCharacteristic(characteristic) {
             } else {
                 // release
                 uiToggleStateButton(false);
-                uiCountPressButton();
             }
         });
     }).catch(error => {

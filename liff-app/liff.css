@@ -1,9 +1,10 @@
-body, table {
-  font-size: 14pt;
-  font-family: "Montserrat", sans-serif;
-  margin: 0pt;
-  text-align: center;
-  padding-top: 18pt;
+body,
+table {
+    font-size: 14pt;
+    font-family: "Montserrat", sans-serif;
+    margin: 0pt;
+    text-align: center;
+    padding-top: 18pt;
 }
 
 p {
@@ -19,9 +20,11 @@ p {
 }
 
 .btn-led-toggle {
-    box-shadow: 0 4pt 8pt 0 rgba(0,0,0,0.2), 0 3pt 10pt 0 rgba(0,0,0,0.19);
-    color: #f8f9fa; /* Light */
-    background-color: #6c757d; /* Gray */
+    box-shadow: 0 4pt 8pt 0 rgba(0, 0, 0, 0.2), 0 3pt 10pt 0 rgba(0, 0, 0, 0.19);
+    color: #f8f9fa;
+    /* Light */
+    background-color: #6c757d;
+    /* Gray */
     width: 160pt;
     font-weight: bold;
     height: 40pt;
@@ -31,12 +34,15 @@ p {
 
 .btn-led-toggle:active {
     transform: translateY(4pt);
-    box-shadow: 0 2pt 4pt 0 rgba(0,0,0,0.2), 0 1pt 5pt 0 rgba(0,0,0,0.19);
-    background-color: #6c757d; /* Gray */
+    box-shadow: 0 2pt 4pt 0 rgba(0, 0, 0, 0.2), 0 1pt 5pt 0 rgba(0, 0, 0, 0.19);
+    background-color: #6c757d;
+    /* Gray */
 }
 
-.led-on, .led-on:active {
-    background-color: #16C464; /* LINE Green */
+.led-on,
+.led-on:active {
+    background-color: #16C464;
+    /* LINE Green */
 }
 
 .btn-state {
@@ -44,28 +50,37 @@ p {
     border-radius: 4pt;
     margin-bottom: 8pt;
     width: 100pt;
-    border: 1pt solid #6c757d; /* Gray */
-    color: #6c757d; /* Gray */
-    background-color: #f8f9fa; /* Light */
+    border: 1pt solid #6c757d;
+    /* Gray */
+    color: #6c757d;
+    /* Gray */
+    background-color: #f8f9fa;
+    /* Light */
 }
 
-.btn-state:active, .pressed {
-    color: #343a40; /* Dark */
-    border: 1pt solid #343a40; /* Dark */
+.btn-state:active,
+.pressed {
+    color: #343a40;
+    /* Dark */
+    border: 1pt solid #343a40;
+    /* Dark */
     box-shadow: 0 2pt #666;
     transform: translateY(4pt);
 }
 
 .inactive {
-    color: #6c757d; /* Gray */
+    color: #6c757d;
+    /* Gray */
 }
 
 .success {
-    color: #16C464; /* LINE Green */
+    color: #16C464;
+    /* LINE Green */
 }
 
 .error {
-    color: #dc3545; /* Red */
+    color: #dc3545;
+    /* Red */
 }
 
 .hidden {
