@@ -180,9 +180,9 @@ function liffConnectToDevice(device) {
             device.removeEventListener('gattserverdisconnected', disconnectCallback);
 
             // Reset LED state
-            ledState = true;
+            ledState = false;
             // Reset UI elements
-            uiToggleLedButton(true);
+            uiToggleLedButton(false);
 
             // Try to reconnect
             initializeLiff();
