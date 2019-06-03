@@ -38,7 +38,7 @@ function handlerToggleLed() {
 function uiToggleLedButton(state) {
     const el = document.getElementById("btn-led-toggle");
     const img = document.getElementById("bulb-img");
-    const imgSrc = state ? "https://yangchinfu.github.io/line-things-starter/assets/on.png" : "https://yangchinfu.github.io/line-things-starter/assets/off.png";
+    const imgSrc = state ? "https://yangchinfu.github.io/line-things-starter/assets/off.png" : "https://yangchinfu.github.io/line-things-starter/assets/on.png";
     img.setAttribute("src", imgSrc);
     el.innerText = state ? "斷電" : "通電";
 
@@ -180,9 +180,9 @@ function liffConnectToDevice(device) {
             device.removeEventListener('gattserverdisconnected', disconnectCallback);
 
             // Reset LED state
-            ledState = false;
+            ledState = true;
             // Reset UI elements
-            uiToggleLedButton(false);
+            uiToggleLedButton(true);
 
             // Try to reconnect
             initializeLiff();
