@@ -49,8 +49,8 @@ function uiToggleLedButton(state) {
 function uiCountPressButton() {
     clickCount++;
 
-    const el = document.getElementById("click-count");
-    el.innerText = clickCount;
+    // const el = document.getElementById("click-count");
+    // el.innerText = clickCount;
 }
 
 function uiToggleStateButton(pressed) {}
@@ -218,7 +218,7 @@ function liffGetPSDIService(service) {
         // Byte array to hex string
         const psdi = new Uint8Array(value.buffer)
             .reduce((output, byte) => output + ("0" + byte.toString(16)).slice(-2), "");
-        document.getElementById("device-psdi").innerText = psdi;
+        // document.getElementById("device-psdi").innerText = psdi;
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
