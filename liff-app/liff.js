@@ -9,8 +9,8 @@ const PSDI_SERVICE_UUID = 'E625601E-9E55-4597-A598-76018A0D293D'; // Device ID
 const PSDI_CHARACTERISTIC_UUID = '26E2B12B-85F0-4F3F-9FDD-91D114270E6E';
 
 // UI settings
-let ledState = false; // true: LED on, false: LED off
-let clickCount = 0;
+let ledState = true; // true: LED on, false: LED off
+// let clickCount = 0;
 
 // -------------- //
 // On window load //
@@ -50,7 +50,7 @@ function uiToggleLedButton(state) {
 }
 
 function uiCountPressButton() {
-    clickCount++;
+    // clickCount++;
 
     // const el = document.getElementById("click-count");
     // el.innerText = clickCount;
