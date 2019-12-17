@@ -49,15 +49,6 @@ function uiToggleLedButton(state) {
     }
 }
 
-function uiCountPressButton() {
-    // clickCount++;
-
-    // const el = document.getElementById("click-count");
-    // el.innerText = clickCount;
-}
-
-function uiToggleStateButton(pressed) {}
-
 function uiToggleDeviceConnected(connected) {
     const elStatus = document.getElementById("status");
     const elControls = document.getElementById("controls");
@@ -180,9 +171,9 @@ function liffConnectToDevice(device) {
             device.removeEventListener('gattserverdisconnected', disconnectCallback);
 
             // Reset LED state
-            ledState = false;
+            // ledState = false;
             // Reset UI elements
-            uiToggleLedButton(false);
+            // uiToggleLedButton(false);
 
             // Try to reconnect
             initializeLiff();
@@ -207,7 +198,7 @@ function liffGetUserService(service) {
         window.ledCharacteristic = characteristic;
 
         // Switch off by default
-        liffToggleDeviceLedState(true);
+        // liffToggleDeviceLedState(true);
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
@@ -222,25 +213,6 @@ function liffGetPSDIService(service) {
         const psdi = new Uint8Array(value.buffer)
             .reduce((output, byte) => output + ("0" + byte.toString(16)).slice(-2), "");
         // document.getElementById("device-psdi").innerText = psdi;
-    }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
-    });
-}
-
-function liffGetButtonStateCharacteristic(characteristic) {
-    // Add notification hook for button state
-    // (Get notified when button state changes)
-    characteristic.startNotifications().then(() => {
-        characteristic.addEventListener('characteristicvaluechanged', e => {
-            const val = (new Uint8Array(e.target.value.buffer))[0];
-            if (val > 0) {
-                // press
-                uiToggleStateButton(true);
-            } else {
-                // release
-                uiToggleStateButton(false);
-            }
-        });
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
