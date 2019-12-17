@@ -206,10 +206,8 @@ function liffGetLedStateCharacteristic(characteristic) {
     // Add notification hook for button state
     // (Get notified when button state changes)
     characteristic.startNotifications().then(() => {
-        characteristic.addEventListener('characteristicvaluechanged', e => {
-            const val = (new Uint8Array(e.target.value.buffer))[0];
-            uiToggleLedButton((val) ? true : false);
-        });
+        state = characteristic.readValue().buffer[0];
+        uiToggleLedButton((state) ? true : false);
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
