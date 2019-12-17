@@ -206,6 +206,7 @@ function liffGetLedStateCharacteristic(characteristic) {
     characteristic.startNotifications().then(() => {
         state = characteristic.readValue().buffer[0];
         uiToggleLedButton((state) ? true : false);
+        ledState = state;
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
