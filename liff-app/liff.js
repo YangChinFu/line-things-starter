@@ -197,6 +197,19 @@ function liffGetUserService(service) {
     });
 }
 
+function liffGetLedStateCharacteristic(characteristic) {
+    // Add notification hook for button state
+    // (Get notified when button state changes)
+    characteristic.startNotifications().then(() => {
+        characteristic.addEventListener('characteristicvaluechanged', e => {
+            const val = (new Uint8Array(e.target.value.buffer))[0];
+            uiToggleLedButton((val) ? true : false);
+        });
+    }).catch(error => {
+        uiStatusError(makeErrorMsg(error), false);
+    });
+}
+
 function liffGetPSDIService(service) {
     // Get PSDI value
     service.getCharacteristic(PSDI_CHARACTERISTIC_UUID).then(characteristic => {
