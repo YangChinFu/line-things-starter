@@ -188,8 +188,8 @@ function liffConnectToDevice(device) {
 function liffGetUserService(service) {
     // Toggle LED
     service.getCharacteristic(LED_CHARACTERISTIC_UUID).then(characteristic => {
-        window.ledCharacteristic = characteristic;
-
+        // window.ledCharacteristic = characteristic;
+        liffGetLedStateCharacteristic(characteristic);
         // Switch off by default
         // liffToggleDeviceLedState(true);
     }).catch(error => {
