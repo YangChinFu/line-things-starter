@@ -190,14 +190,12 @@ function liffGetUserService(service) {
     service.getCharacteristic(ON_CONNECT_HOOK_CHARACTERISTIC_UUID).then(characteristic => {
         liffGetLedStateCharacteristic(characteristic);
     }).catch(error => {
-        alert(ON_CONNECT_HOOK_CHARACTERISTIC_UUID);
         uiStatusError(makeErrorMsg(error), false);
     });
     // Toggle LED
     service.getCharacteristic(LED_CHARACTERISTIC_UUID).then(characteristic => {
         window.ledCharacteristic = characteristic;
     }).catch(error => {
-        alert(LED_CHARACTERISTIC_UUID);
         uiStatusError(makeErrorMsg(error), false);
     });
 }
