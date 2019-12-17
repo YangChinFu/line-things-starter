@@ -188,7 +188,7 @@ function liffConnectToDevice(device) {
 function liffGetUserService(service) {
     // Hooked LED state
     service.getCharacteristic(ON_CONNECT_HOOK_CHARACTERISTIC_UUID).then(characteristic => {
-        state = characteristic.readValue().buffer[0];
+        state = (new Uint8Array(characteristic.readValue().buffer))[0];
         uiToggleLedButton((state) ? true : false);
         ledState = state;
     }).catch(error => {
