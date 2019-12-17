@@ -2,7 +2,7 @@
 const USER_SERVICE_UUID = 'd4333fc0-005d-40d0-82d2-65021acf6f0c'; // LED, Button
 // User service characteristics
 const LED_CHARACTERISTIC_UUID = 'E9062E71-9E62-4BC6-B0D3-35CDCD9B027B';
-const BTN_CHARACTERISTIC_UUID = '62FBD229-6EDD-4D1A-B554-5C4E1BB29169';
+const ON_CONNECT_HOOK_CHARACTERISTIC_UUID = '62FBD229-6EDD-4D1A-B554-5C4E1BB29169';
 
 // PSDI Service UUID: Fixed value for Developer Trial
 const PSDI_SERVICE_UUID = 'E625601E-9E55-4597-A598-76018A0D293D'; // Device ID
@@ -187,7 +187,7 @@ function liffConnectToDevice(device) {
 
 function liffGetUserService(service) {
     // Toggle LED
-    service.getCharacteristic(LED_CHARACTERISTIC_UUID).then(characteristic => {
+    service.getCharacteristic(ON_CONNECT_HOOK_CHARACTERISTIC_UUID).then(characteristic => {
         window.ledCharacteristic = characteristic;
         liffGetLedStateCharacteristic(characteristic);
         // Switch off by default
