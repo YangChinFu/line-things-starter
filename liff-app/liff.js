@@ -188,25 +188,15 @@ function liffConnectToDevice(device) {
 function liffGetUserService(service) {
     // Hooked LED state
     service.getCharacteristic(ON_CONNECT_HOOK_CHARACTERISTIC_UUID).then(characteristic => {
-        liffGetLedStateCharacteristic(characteristic);
+        state = characteristic.readValue().buffer[0];
+        uiToggleLedButton((state) ? true : false);
+        ledState = state;
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
     // Toggle LED
     service.getCharacteristic(LED_CHARACTERISTIC_UUID).then(characteristic => {
         window.ledCharacteristic = characteristic;
-    }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
-    });
-}
-
-function liffGetLedStateCharacteristic(characteristic) {
-    // Add notification hook for button state
-    // (Get notified when button state changes)
-    characteristic.startNotifications().then(() => {
-        state = characteristic.readValue().buffer[0];
-        uiToggleLedButton((state) ? true : false);
-        ledState = state;
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
