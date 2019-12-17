@@ -186,12 +186,15 @@ function liffConnectToDevice(device) {
 }
 
 function liffGetUserService(service) {
-    // Toggle LED
+    // Hooked LED state
     service.getCharacteristic(ON_CONNECT_HOOK_CHARACTERISTIC_UUID).then(characteristic => {
-        window.ledCharacteristic = characteristic;
         liffGetLedStateCharacteristic(characteristic);
-        // Switch off by default
-        // liffToggleDeviceLedState(true);
+    }).catch(error => {
+        uiStatusError(makeErrorMsg(error), false);
+    });
+    // Toggle LED
+    service.getCharacteristic(LED_CHARACTERISTIC_UUID).then(characteristic => {
+        window.ledCharacteristic = characteristic;
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
