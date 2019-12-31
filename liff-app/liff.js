@@ -38,7 +38,7 @@ function handlerToggleLed() {
 function uiToggleLedButton(state) {
     const el = document.getElementById("btn-led-toggle");
     const img = document.getElementById("bulb-img");
-    const imgSrc = state ? "https://yangchinfu.github.io/line-things-starter/assets/off.png" : "https://yangchinfu.github.io/line-things-starter/assets/on.png";
+    const imgSrc = state ? "https://chinfuyang.github.io/line-things-starter/assets/off.png" : "https://chinfuyang.github.io/line-things-starter/assets/on.png";
     img.setAttribute("src", imgSrc);
     el.innerText = state ? "通電" : "斷電";
 
